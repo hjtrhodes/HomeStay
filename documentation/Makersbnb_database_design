@@ -30,6 +30,13 @@ Nouns:
 posts, title, tags, name
 ```
 
+
+
+
+
+
+
+
 ## 2. Infer the Table Name and Columns
 #TABLES AND PROPERTIES
 
@@ -56,6 +63,23 @@ Bookings
 -UserId
 -Date
 -Confirmed?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 3. Decide the column types.
 
