@@ -35,6 +35,43 @@ uses asciiflow.com but you could also use excalidraw.com, draw.io, or miro.com_
 _Also design the interface of each class in more detail._
 
 ```python
+# {{PROBLEM}} Multi-Class Planned Design Recipe
+
+## 1. Describe the Problem
+
+_Put or write the user story here. Add any clarifying notes you might have._
+
+## 2. Design the Class System
+
+_Consider diagramming out the classes and their relationships. Take care to
+focus on the details you see as important, not everything. The diagram below
+uses asciiflow.com but you could also use excalidraw.com, draw.io, or miro.com_
+
+```
+┌────────────────────────────┐
+│ MusicPlayer                │
+│                            │
+│ - tracks                   │
+│ - add(track)               │
+│ - search_by_title(keyword) │
+│   => [tracks...]           │
+└───────────┬────────────────┘
+            │
+            │ owns a list of
+            ▼
+┌─────────────────────────┐
+│ Track(title, artist)    │
+│                         │
+│ - title                 │
+│ - artist                │
+│ - format()              │
+│   => "TITLE by ARTIST"  │
+└─────────────────────────┘
+```
+
+_Also design the interface of each class in more detail._
+
+```python
 class MusicLibrary:
     # User-facing properties:
     #   tracks: list of instances of Track
@@ -76,6 +113,43 @@ class Track:
         pass # No code here yet
 
 ```
+class User
+<!-- Stores name/email/password -->
+
+
+class UserRepository
+<!-- db_connection -->
+Create new user (Nice to have)
+Login function (get and validate email and password)
+
+
+class Space
+<!-- Store and present name/description/price/available from and to/ UserID -->
+
+
+class SpaceRepository
+<!-- db_connection -->
+Get all the spaces
+Get user
+Get availability dates
+Get accepted bookings (to display available dates)?
+Create a new space
+Find by UserID
+
+class Booking
+<!-- Store and present SpaceID, UserID, Date, Status -->
+
+class BookingRepository
+<!-- db_connection -->
+Request a booking
+Confirm booking
+Deny booking (automatic deny if date not available)
+Get all bookings
+Get my requests (view all made requests)
+See requests made by user (UserID)
+See requests made on a listing (SpaceID - cycle through booking and find ones associated with spaceID)
+
+
 
 ## 3. Create Examples as Integration Tests
 
