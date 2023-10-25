@@ -6,6 +6,9 @@ from lib.database_connection import get_flask_database_connection
 app = Flask(__name__)
 
 # == Your Routes Here ==
+@app.route('/login', methods=['GET'])
+def get_login():
+    return render_template('login.html')
 
 # GET /index
 # Returns the homepage
