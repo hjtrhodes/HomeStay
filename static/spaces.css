@@ -1,0 +1,70 @@
+.spaces-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* This allows for responsive columns, adjusting the number of columns based on container width */
+    gap: 20px; /* Gap between each grid item */
+    padding: 20px; /* Optional: space from the container edge */
+    background-color: #f5f5f5; /* Just a light background to differentiate the grid, change as needed */
+}
+
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px; /* Adjust padding as needed */
+    background-color: #f8f8f8; /* Color for header background */
+}
+
+.logo {
+    height: 50px; /* Adjust size as needed */
+}
+
+.spaces-container {
+    width: 60%; 
+    height: 50%;
+    margin: 250px auto;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #36596f; 
+}
+
+.space-item {
+    background-color: aquamarine;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s; 
+}
+.space-item:hover {
+    transform: translateY(-5px); 
+}
+
+.space-item h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: hsla(242,88.4%,66.3%,1);
+
+}
+
+.space-item p {
+    color: #666;
+}
+
+.space-button {
+    background-color: #e86895;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 8px 12px;
+    transition: background-color 0.3s;
+}
+
+.space-button:hover {
+    background-color: #0a2737; /* Slightly darker on hover */
+}
