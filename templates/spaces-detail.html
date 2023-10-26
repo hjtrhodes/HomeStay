@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Spaces</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/style.css"> 
+    <link rel="stylesheet" href="/static/spaces.css"> 
+    </head>
+    <body>
+        <h1>Book this Space</h1>
+        {% for space in spaces %}
+        <div class="space-listing">
+            <div class="space-item">
+                <h3>{{space.space_name}}</h3>
+                <p>{{space.space_description}}</p>
+                <p>{{space.available_from}}</p>
+                <p>{{space.available_to}}</p>
+                <p>£{{space.price_per_night}}</p>
+                <a href="/spaces/{{space.id}}">Book Now</a>
+            {% endfor %}
+            </div>
+            <br>
+
+
+
+    </body>
+</html>

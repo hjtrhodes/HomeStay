@@ -56,6 +56,17 @@ def get_my_spaces():
         my_spaces = space_repo.get_all_spaces_by_id(session['user_id'])
         return render_template('my-spaces.html', my_spaces=my_spaces)
 
+@app.route('/spaces/<int:id>', methods=['GET'])
+def show_space_detail(id):
+    connection = get_flask_database_connection(app)
+    if 'user_email' not in session:
+        return redirect("/login")
+    else:
+        space_repo = SpaceRepository(connection)
+        spaces = space_repo.get_single_space_by_id(id)
+        return render_template('spaces-detail.html', spaces=spaces)
+
+
 @app.route('/logout', methods=['GET'])
 def get_logout():
     if 'user_email' not in session:
