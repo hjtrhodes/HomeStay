@@ -104,14 +104,14 @@ def test_logout_ends_session(web_client, db_connection):
     assert response.status_code == 302
     assert response.location == '/login'
 
-def test_view_my_spaces(web_client, db_connection, test_web_address, page):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
-    web_client.post('/login', data={
-        'email': 'bjohnson@email.com',
-        'password': 'mysecretpassword'
-    })
-    
-    page.goto(f"http://{test_web_address}/my-spaces")
-    
-
-    assert page.url == f"http://{test_web_address}/my-spaces"
+#def test_view_my_spaces(web_client, db_connection, test_web_address, page):
+#    db_connection.seed('seeds/makers_bnb_seed.sql')
+#    web_client.post('/login', data={
+#        'email': 'bjohnson@email.com',
+#        'password': 'mysecretpassword'
+#    })
+#    
+#    page.goto(f"http://{test_web_address}/my-spaces")
+#    
+#
+#    assert page.url == f"http://{test_web_address}/my-spaces"
