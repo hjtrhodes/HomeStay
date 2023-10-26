@@ -1,4 +1,5 @@
 from playwright.sync_api import Page, expect
+import time
 
 # Tests for your routes go here
 
@@ -50,7 +51,7 @@ def test_login_post_valid_credentials(web_client, db_connection, page):
 
 
 """
-Test rendering of the spaces page using Mock data
+Test that login form redirects to login page if invalid credentials
 """
 
 
@@ -67,3 +68,23 @@ def test_login_sets_session(web_client, db_connection):
 
     with web_client.session_transaction() as session:
         assert session['user_email'] == 'bjohnson@email.com'
+
+
+def test_login_redirects_to_login_if_not_logged_in(page, test_web_address):
+    page.goto(f"http://{test_web_address}/spaces")
+    assert page.url == f"http://{test_web_address}/login"
+
+    """
+    test that logout ends the session
+    """
+
+
+def test_logout_ends_session(web_client, db_connection):
+    db_connection.seed('seeds/makers_bnb_seed.sql')
+    web_client.post('/login', data={
+        'email': 'bjohnson@email.com',
+        'password': 'mysecretpassword'
+    })
+    response = web_client.get('/logout')
+    assert response.status_code == 302
+    assert response.location == '/login'
