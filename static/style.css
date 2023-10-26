@@ -1,3 +1,98 @@
 body {
-    font-size: 18px;
+    font-family: 'Ariel', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* #position brand logo on upper left corner */
+.brand-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 20px;
+    color: #0d334a
+
+}
+
+.centered-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;  /* Space between centered containers */
+}
+
+.navbar {
+    display: flex;
+    gap: 15px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.login-section {
+    background-color: #7bdcbf;
+    padding: 20px;
+    border-radius: 4px;
+}
+.login {
+    width: 382px;
+    overflow: hidden;
+    padding: 80px;
+    background: #36596f;
+    border-radius: 15px;
+    position: absolute;       /* Position it absolutely */
+    top: 50%;                 /* Start it halfway down the body */
+    left: 50%;                /* Start it halfway across the body */
+    transform: translate(-50%, -50%); /* This will pull the box back by half of its own width and height, centering it */
+}
+h2{
+    text-align: center;
+    color: #72c2ed;
+    padding: 5px;
+}
+label{
+    color: #72c2ed;
+    font-size: 17px;
+}
+#email_label {
+    width: 350px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+}
+#password{
+    width: 350px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+
+}
+#log{
+    width: 360px;
+    height: 50px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+    color: #e1d3dc;
+    background-color: #e86895;
+    font-size: 17px;
+}
+#log:hover{
+    background-color: #2597d4 ;
+    color: #e1d3dc;
 }
