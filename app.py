@@ -1,11 +1,14 @@
+from flask import Flask
 import os
 from flask import Flask, request, session, redirect, render_template
 from lib.database_connection import get_flask_database_connection
 from lib.user_repository import *
 
+
 # Create a new Flask app
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
+app.config['PERMANENT_SESSION_LIFETIME'] = 1800  # 30 minutes
 
 # == Your Routes Here ==
 
@@ -30,7 +33,19 @@ def submit_login():
 
 @app.route('/spaces', methods=['GET'])
 def get_spaces():
-    return render_template('spaces.html')
+    if 'user_email' not in session:
+        return redirect("/login")
+    else:
+        return render_template('spaces.html')
+
+
+@app.route('/logout', methods=['GET'])
+def get_logout():
+    if 'user_email' not in session:
+        return redirect("/login")
+    else:
+        session.clear()
+        return redirect("/login")
 
 
 # GET /index
