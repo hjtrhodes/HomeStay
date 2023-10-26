@@ -1,5 +1,6 @@
 from lib.booking import Booking
 from datetime import date
+
 class Boooking_Repository():
     def __init__(self, connection):
         self._connection = connection
@@ -29,6 +30,8 @@ class Boooking_Repository():
     def get_all_confirmed_by_space(self, space_id):
         return [x for x in self.get_all_by_space_id(space_id) if x.booking_status == "Confirmed"]
 
+    def get_all_confirmed_dates(self, space_id):
+        return [x.booking_date for x in self.get_all_by_space_id(space_id) if x.booking_status == "Confirmed"]
 
 
 

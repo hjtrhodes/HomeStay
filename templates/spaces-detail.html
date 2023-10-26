@@ -19,6 +19,11 @@
                 <a href="/spaces/{{space.id}}">Book Now</a>
             {% endfor %}
             </div>
+            <h3> dates available </h3>
+        {% for date in dates %}
+        <article>
+            <p> {{date}}</p>
+        {% endfor %}
             <br>
 
 

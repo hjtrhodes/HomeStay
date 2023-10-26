@@ -5,7 +5,7 @@ from lib.database_connection import get_flask_database_connection
 from lib.user_repository import *
 from lib.booking_repository import Boooking_Repository
 from lib.spaces_repository import SpaceRepository
-
+from lib.get_dates import *
 
 # Create a new Flask app
 app = Flask(__name__)
@@ -64,7 +64,13 @@ def show_space_detail(id):
     else:
         space_repo = SpaceRepository(connection)
         spaces = space_repo.get_single_space_by_id(id)
-        return render_template('spaces-detail.html', spaces=spaces)
+        booking_repo = Boooking_Repository(connection)
+        l_space = space_repo.get_single_space_by_id(id)
+        a_space = l_space[0]
+        all_dates = get_dif_between_dates(a_space.available_from, a_space.available_to)
+        booked_dates = booking_repo.get_all_confirmed_dates(id)
+        dates = [x for x in all_dates if x not in  booked_dates]
+        return render_template('spaces-detail.html', spaces=spaces, dates=dates)
 
 
 @app.route('/logout', methods=['GET'])
