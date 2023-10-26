@@ -51,7 +51,7 @@ body {
     width: 382px;
     overflow: hidden;
     padding: 80px;
-    background: #0d334a;
+    background: #36596f;
     border-radius: 15px;
     position: absolute;       /* Position it absolutely */
     top: 50%;                 /* Start it halfway down the body */
@@ -64,7 +64,7 @@ h2{
     padding: 5px;
 }
 label{
-    color: #a4ddf0;
+    color: #72c2ed;
     font-size: 17px;
 }
 #email_label {
