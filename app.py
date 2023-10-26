@@ -1,25 +1,30 @@
 import os
-from flask import Flask, request, redirect, render_template
+from flask import Flask, request, session, redirect, render_template
 from lib.database_connection import get_flask_database_connection
 from lib.user_repository import *
 
 # Create a new Flask app
 app = Flask(__name__)
+app.secret_key = os.urandom(24)
 
 # == Your Routes Here ==
+
+
 @app.route('/login', methods=['GET'])
 def get_login():
     return render_template('login.html')
+
 
 @app.route('/login', methods=['POST'])
 def submit_login():
     connection = get_flask_database_connection(app)
     repo = UserRepository(connection)
-    
+
     email = request.form['email']
     password = request.form['password']
     user = repo.get_by_email(email)
     if repo.validate_credentials(email, password) == True:
+        session['user_email'] = email
         return redirect("/spaces")
 
 
@@ -35,6 +40,7 @@ def get_spaces():
 @app.route('/index', methods=['GET'])
 def get_index():
     return render_template('index.html')
+
 
 # These lines start the server if you run this file directly
 # They also start the server configured to use the test database

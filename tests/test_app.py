@@ -52,3 +52,18 @@ def test_login_post_valid_credentials(web_client, db_connection, page):
 """
 Test rendering of the spaces page using Mock data
 """
+
+
+def test_login_sets_session(web_client, db_connection):
+    db_connection.seed('seeds/makers_bnb_seed.sql')
+
+    response = web_client.post('/login', data={
+        'email': 'bjohnson@email.com',
+        'password': 'mysecretpassword'
+    })
+
+    assert response.status_code == 302
+    assert response.location == '/spaces'
+
+    with web_client.session_transaction() as session:
+        assert session['user_email'] == 'bjohnson@email.com'
