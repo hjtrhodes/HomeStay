@@ -3,6 +3,8 @@ import os
 from flask import Flask, request, session, redirect, render_template
 from lib.database_connection import get_flask_database_connection
 from lib.user_repository import *
+from lib.booking_repository import Boooking_Repository
+from lib.spaces_repository import SpaceRepository
 
 
 # Create a new Flask app
@@ -28,16 +30,31 @@ def submit_login():
     user = repo.get_by_email(email)
     if repo.validate_credentials(email, password) == True:
         session['user_email'] = email
+        session['user_id'] = user.id
         return redirect("/spaces")
 
 
 @app.route('/spaces', methods=['GET'])
 def get_spaces():
+    connection = get_flask_database_connection(app)
     if 'user_email' not in session:
         return redirect("/login")
     else:
-        return render_template('spaces.html')
+        space_repo = SpaceRepository(connection)
+        spaces = space_repo.all()
 
+        return render_template('spaces.html', spaces=spaces)
+
+@app.route('/my-spaces', methods=['GET'])
+def get_my_spaces():
+    connection = get_flask_database_connection(app)
+    
+    if 'user_email' not in session:
+        return redirect("/login")
+    else:
+        space_repo = SpaceRepository(connection)
+        my_spaces = space_repo.get_all_spaces_by_id(session['user_id'])
+        return render_template('my-spaces.html', my_spaces=my_spaces)
 
 @app.route('/logout', methods=['GET'])
 def get_logout():

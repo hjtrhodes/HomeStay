@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <title>Spaces</title>
+    <title>my spaces</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/static/style.css"> 
     <link rel="stylesheet" href="/static/spaces.css"> 
@@ -12,9 +12,9 @@
         <h1>MakersBnB</h1>
     </div>
     <div class="spaces-container">
-    <h2>Book a Space</h2>
+    <h2>My Spaces</h2>
     <br>
-    {% for space in spaces %}
+    {% for space in my_spaces %}
     <div class="space-listing">
         <div class="space-item">
             <h3>{{space.space_name}}</h3>
@@ -22,7 +22,7 @@
             <p>{{space.available_from}}</p>
             <p>{{space.available_to}}</p>
             <p>£{{space.price_per_night}}</p>
-            <button class= "space-button">Book Now</button>
+            
         </div>
         <br>
 
@@ -33,12 +33,6 @@
     </div>
     <br>
     <br>
-    <div>
-        <div>
-            <a href="/my-spaces">View my spaces</a>
-        </div>
-    
-    </div>
 
     <div>
         <a href="/logout">LOGOUT</a>

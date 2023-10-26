@@ -69,6 +69,21 @@ def test_login_sets_session(web_client, db_connection):
     with web_client.session_transaction() as session:
         assert session['user_email'] == 'bjohnson@email.com'
 
+def test_login_sets_user_id(web_client, db_connection):
+    db_connection.seed('seeds/makers_bnb_seed.sql')
+
+    response = web_client.post('/login', data={
+        'email': 'bjohnson@email.com',
+        'password': 'mysecretpassword'
+    })
+
+    assert response.status_code == 302
+    assert response.location == '/spaces'
+
+    with web_client.session_transaction() as session:
+        assert session['user_id'] == 1       
+        
+
 
 def test_login_redirects_to_login_if_not_logged_in(page, test_web_address):
     page.goto(f"http://{test_web_address}/spaces")
@@ -88,3 +103,15 @@ def test_logout_ends_session(web_client, db_connection):
     response = web_client.get('/logout')
     assert response.status_code == 302
     assert response.location == '/login'
+
+def test_view_my_spaces(web_client, db_connection, test_web_address, page):
+    db_connection.seed('seeds/makers_bnb_seed.sql')
+    web_client.post('/login', data={
+        'email': 'bjohnson@email.com',
+        'password': 'mysecretpassword'
+    })
+    
+    page.goto(f"http://{test_web_address}/my-spaces")
+    
+
+    assert page.url == f"http://{test_web_address}/my-spaces"
