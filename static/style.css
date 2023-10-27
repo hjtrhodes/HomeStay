@@ -21,7 +21,7 @@ nav ul {
     list-style-type: none;
     text-align: right;
     font-size: 20px;
-    word-spacing: 5px;
+    word-spacing: 2px;
     padding: 20px;
 }
 
@@ -37,10 +37,10 @@ nav li a {
 
 
 a:hover {
-    color:  rgb(234, 217, 217);
+    color:  #0a2737;
 }
 nav a:active {
-    color:  rgb(228, 199, 199);
+    color:  #0a2737;
 }
 
 header {
@@ -61,6 +61,25 @@ h1 {
     justify-content: center;
     width: 250px; /* Adjust this for the size of your logo */
 }
+
+.brand-logo-space img{
+    position:absolute;
+    left:0;
+    top:22px;
+    padding: 20px;
+    width: 30px; /* Adjust this for the size of your logo */
+
+}
+
+.brand-logo-space h1 {
+    text-align:left;
+    position:absolute;
+    left:40px;
+    top:0;
+    padding: 20px;
+
+}
+
 .main-container {
     display: flex;
     flex-direction: column;
@@ -106,8 +125,9 @@ h1 {
 }
 h2{
     text-align: center;
-    color: #72c2ed;
+    color: #ffffff;
     padding: 5px;
+    font-size: 2em;
 }
 label{
     color: #72c2ed;

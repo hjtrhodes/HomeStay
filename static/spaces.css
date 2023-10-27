@@ -46,9 +46,9 @@ h1 {
 }
 
 .space-item {
-    background-color: aquamarine;
+    background-color: #ff5a60;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 15px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s; 
@@ -61,7 +61,10 @@ h1 {
     margin-top: 0;
     margin-bottom: 10px;
     font-size: 20px;
-    color: hsla(242,88.4%,66.3%,1);
+    text-align: center;
+    color: #ffffff;
+    padding: 5px;
+    font-size: 1em;
 
 }
 
