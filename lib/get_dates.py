@@ -1,4 +1,4 @@
-from lib.booking_repository import Boooking_Repository
+from lib.booking_repository import BookingRepository
 from lib.spaces_repository import SpaceRepository
 from datetime import timedelta
 from lib.space import Space

@@ -1,7 +1,7 @@
 from lib.booking import Booking
 from datetime import date
 
-class Boooking_Repository():
+class BookingRepository():
     def __init__(self, connection):
         self._connection = connection
 
@@ -49,6 +49,3 @@ class Boooking_Repository():
         booking.id = row["id"]
         return booking    
 
-
-
-        

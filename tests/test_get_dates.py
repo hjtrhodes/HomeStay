@@ -13,7 +13,7 @@ def test_get_date_ranges():
         datetime.date(2023, 10, 14), 
         datetime.date(2023, 10, 15)
         ]
-def test_get_date_ranges_from_db(db_connection):
+def test_get_date_ranges_2(db_connection):
     db_connection.seed('seeds/makers_bnb_seed.sql')
     space_repo = SpaceRepository(db_connection)
     spacelist = space_repo.get_single_space_by_id(1)
@@ -63,7 +63,7 @@ def test_get_date_ranges_from_db(db_connection):
     s_date = space.available_from
     e_date = space.available_to
     dates = get_dif_between_dates(s_date, e_date)
-    Booking_repo = Boooking_Repository(db_connection)
+    Booking_repo = BookingRepository(db_connection)
     confirmed_dates =  Booking_repo.get_all_confirmed_dates(1)
     res = [x for x in dates if x not in  confirmed_dates]
     assert res == [
