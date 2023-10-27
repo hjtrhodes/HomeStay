@@ -79,6 +79,13 @@ def test_get_all_confirmed_dates(db_connection):
         Booking(4, date(2023, 10, 25), 'Confirmed', 2, 3),
     ]
 
+def test_confirmed_dates(db_connection):
+    db_connection.seed('seeds/makers_bnb_seed.sql')
+    connection = db_connection
+    test_repo = Boooking_Repository(connection)
+    dates = test_repo.get_all_confirmed_dates(1)
+    assert dates == [date(2023, 10, 18)]
+
 
 
     
