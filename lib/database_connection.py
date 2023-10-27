@@ -73,6 +73,7 @@ class DatabaseConnection:
 def get_flask_database_connection(app):
     if not hasattr(g, 'flask_database_connection'):
         g.flask_database_connection = DatabaseConnection(
+            # test_mode=app.config['TESTING'])
             test_mode=os.getenv('APP_ENV') == 'test')
         g.flask_database_connection.connect()
     return g.flask_database_connection

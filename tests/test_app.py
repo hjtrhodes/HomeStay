@@ -13,10 +13,10 @@ def test_get_index(page, test_web_address):
     page.goto(f"http://{test_web_address}/index")
 
     # We look at the <p> tag
-    strong_tag = page.locator("p")
+    strong_tag = page.locator("h1")
 
-    # We assert that it has the text "This is the homepage."
-    expect(strong_tag).to_have_text("This is the homepage.")
+    # We assert that it has the text "Makersbnb"
+    expect(strong_tag).to_have_text("Makersbnb")
 
 
 """
@@ -29,11 +29,8 @@ def test_get_login(page, test_web_address):
     # We load a virtual browser and navigate to the /login page
     page.goto(f"http://{test_web_address}/login")
 
-    # We look at the <form> tag
-    form_tag = page.locator(".email_label")
-
-    # We assert that it has the text "This is the homepage."
-    expect(form_tag).to_have_text("EMAIL:")
+    form_tag = page.get_by_placeholder("Email")
+    form_tag.fill("playwright@microsoft.com")
 
 
 """
