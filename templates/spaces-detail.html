@@ -7,6 +7,28 @@
     <link rel="stylesheet" href="/static/spaces.css"> 
     </head>
     <body>
+
+                    <!--NAV BAR ONCE LOGGED IN STARTS-->
+    <nav>
+        <ul>
+            <li>
+            <a class="active" href="/index">HOME</a>
+            </li>
+            <li>
+                <a href="/spaces">SPACES</a>
+            </li>
+            <li>
+                <a href="/my-spaces">MY SPACES</a>
+            </li>
+            <li>
+                <a href="/bookings">BOOKINGS</a>
+            </li>
+            <li>
+                <a href="/logout">LOG OUT</a>
+            </li>
+        </ul>
+    </nav>
+    <!--NAV BAR ENDS-->
         <h1>Book this Space</h1>
         {% for space in spaces %}
         <div class="space-listing">

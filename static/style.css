@@ -1,11 +1,66 @@
 body {
-    font-family: 'Ariel', sans-serif;
-    background-color: #f4f4f4;
+    background-color: #FF5A5F; /* Red background */
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+
+} 
+
+/*Nav*/
+
+nav ul {
+    list-style-type: none;
+    text-align: right;
+    font-size: 20px;
+    word-spacing: 5px;
+    padding: 20px;
+}
+
+nav li {
+    display: inline;
+}
+nav li a {
+    display: block;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    display: inline;
+}
+
+
+a:hover {
+    color:  rgb(234, 217, 217);
+}
+nav a:active {
+    color:  rgb(228, 199, 199);
+}
+
+header {
+    text-align: center;
+    padding: 10px;
+}
+
+h1 {
+    color: white;
+}
+
+.brand-logo img {
+    width: 50px; /* Adjust this for the size of your logo */
+}
+
+.home-brand-logo img {
+    align-items: center;
+    justify-content: center;
+    width: 250px; /* Adjust this for the size of your logo */
+}
 .main-container {
     display: flex;
     flex-direction: column;
@@ -14,15 +69,6 @@ body {
     height: 100vh;
 }
 
-/* #position brand logo on upper left corner */
-.brand-logo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 20px;
-    color: #0d334a
-
-}
 
 .centered-container {
     display: flex;
@@ -50,8 +96,8 @@ body {
 .login {
     width: 382px;
     overflow: hidden;
-    padding: 80px;
-    background: #36596f;
+    padding: 40px 60px 60px 60px;
+    background: #f4f4f4;
     border-radius: 15px;
     position: absolute;       /* Position it absolutely */
     top: 50%;                 /* Start it halfway down the body */
@@ -88,11 +134,54 @@ label{
     border: none;
     border-radius: 3px;
     padding-left: 8px;
-    color: #e1d3dc;
-    background-color: #e86895;
+    color: #ffffff;
+    background-color: #FF5A5F;
     font-size: 17px;
 }
+
+.login-title {
+    color: #FF5A5F;
+    font-size: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+
 #log:hover{
-    background-color: #2597d4 ;
+    background-color: #568fae ;
     color: #e1d3dc;
+}
+
+footer {
+    color: #fff; /* Text color */
+    text-align: center;
+    padding: 10px; /* Add some padding to the footer for spacing */
+
+}
+
+/* Style the anchor tag (if needed) */
+/* footer a {
+    color: #fff;
+    text-decoration: none; /* Remove underline from links */
+
+
+
+footer {
+    flex-grow: 1;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 15px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Style the anchor tag (if needed) */
+footer a {
+    color: #fff;
+    text-decoration: none;
 }

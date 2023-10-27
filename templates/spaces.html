@@ -7,10 +7,35 @@
     <link rel="stylesheet" href="/static/spaces.css"> 
     </head>
     <body>
-            <!-- Brand Logo -->
-    <div class="brand-logo">
-        <h1>MakersBnB</h1>
-    </div>
+
+            <!--NAV BAR ONCE LOGGED IN STARTS-->
+    <nav>
+        <ul>
+            <li>
+            <a class="active" href="/index">HOME</a>
+            </li>
+            <li>
+                <a href="/spaces">SPACES</a>
+            </li>
+            <li>
+                <a href="/my-spaces">MY SPACES</a>
+            </li>
+            <li>
+                <a href="/bookings">BOOKINGS</a>
+            </li>
+            <li>
+                <a href="/logout">LOG OUT</a>
+            </li>
+        </ul>
+    </nav>
+    <!--NAV BAR ENDS-->
+        <header>
+            <div class="brand-logo">
+                <img src="https://icon-library.com/images/white-home-icon-png/white-home-icon-png-21.jpg" alt="Airbnb Logo">
+            </div>
+        <h1>Makersbnb</h1>
+    </header>
+
     <div class="spaces-container">
     <h2>Book a Space</h2>
     <br>
@@ -25,14 +50,13 @@
             <a href="/spaces/{{space.id}}">Book Now</a>
         </div>
         <br>
-
-    {% endfor %}
-    
-        
+    {% endfor %}    
         <!-- Duplicate the above .space div for each listing -->
     </div>
+
     <br>
     <br>
+
     <div>
         <div>
             <a href="/my-spaces">View my spaces</a>

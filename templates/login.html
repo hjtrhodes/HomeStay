@@ -7,29 +7,50 @@
 </head>
 <body>
 
+        <!--NAV BAR ONCE LOGGED IN STARTS-->
+        <nav>
+            <ul>
+                <li>
+                <a class="active" href="/index">HOME</a>
+            </li>
+                <li>
+                    <a href="/login">LOGIN</a>
+                </li>
+            </ul>
+        </nav>
+        <!--NAV BAR ENDS-->
+
     <!-- Brand Logo -->
-    <div class="brand-logo">
-        <h1>MakersBnB</h1>
-    </div>
+    <header>
+            <div class="brand-logo">
+                <img src="https://icon-library.com/images/white-home-icon-png/white-home-icon-png-21.jpg" alt="Airbnb Logo">
+            </div>
+        <h1>Makersbnb</h1>
+    </header>
+
 
     <!-- Login Section -->
     <div class="login">
 
         <!-- Login Form -->
+        <p class="login-title">Login</p>
         <form action="/login" method="POST">
             <p>
-                <label class='email_label' for="email"><strong>EMAIL:</strong></label>
-                <br>
-                <input type="text" name="email" id="email_label">
+                <!-- <label class='email_label' for="email"><strong>EMAIL:</strong></label> -->
+                
+                <input type="text" name="email" id="email_label" placeholder="Email">
             </p>
             <p>
-                <label for="password"><strong>PASSWORD:</strong></label>
-                <br>
-                <input type="password" name="password" id="password">
+                <!-- <label for="password"><strong>PASSWORD:</strong></label> -->
+                <input type="password" name="password" id="password" placeholder="Password">
             </p>
             <input type="submit" value="LOGIN" id="log">
         </form>
     </div>
+
+    <footer>
+        <p>&copy; 2023 Makersbnb Ltd., All Rights Reserved - Web Development by Ben, Harry, Megan, and Ray</p>
+    </footer>
 
 </body>
 </html>
