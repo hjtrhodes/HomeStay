@@ -38,17 +38,16 @@
                 <p>{{space.available_from}}</p>
                 <p>{{space.available_to}}</p>
                 <p>£{{space.price_per_night}}</p>
-                <a href="/spaces/{{space.id}}">Book Now</a>
             {% endfor %}
-            </div>
-            <h3> dates available </h3>
-        {% for date in dates %}
-        <article>
-            <p> {{date}}</p>
-        {% endfor %}
+            <h3> Dates Available </h3>
             <br>
-
-
+            <label for="date">Choose a date:</label>
+                <form action='/spaces/create' method="POST">
+                <input type ="date" name="date" id="date" min={{dates[0]}}, max={{dates[-1]}}>
+                <input type="submit" value="Book Date">
+            </select>
+            <br>
+            </div>
 
     </body>
 </html>

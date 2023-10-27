@@ -3,7 +3,7 @@ import os
 from flask import Flask, request, session, redirect, render_template
 from lib.database_connection import get_flask_database_connection
 from lib.user_repository import *
-from lib.booking_repository import Boooking_Repository
+from lib.booking_repository import BookingRepository
 from lib.spaces_repository import SpaceRepository
 from lib.get_dates import *
 
@@ -62,15 +62,28 @@ def show_space_detail(id):
     if 'user_email' not in session:
         return redirect("/login")
     else:
+        session['space_id'] = id
         space_repo = SpaceRepository(connection)
         spaces = space_repo.get_single_space_by_id(id)
-        booking_repo = Boooking_Repository(connection)
+        booking_repo = BookingRepository(connection)
         l_space = space_repo.get_single_space_by_id(id)
         a_space = l_space[0]
         all_dates = get_dif_between_dates(a_space.available_from, a_space.available_to)
         booked_dates = booking_repo.get_all_confirmed_dates(id)
         dates = [x for x in all_dates if x not in  booked_dates]
+        session['available_dates'] = dates
         return render_template('spaces-detail.html', spaces=spaces, dates=dates)
+
+
+@app.route('/spaces/create', methods=['POST'])
+def get_available_date():
+    connection = get_flask_database_connection(app)
+    booking_repo = BookingRepository(connection)
+    date = request.form['date']
+    booking = Booking(None, date, 'Pending', session['user_id'], session['space_id'])
+    booking_repo.create_booking(booking)
+    return redirect("/spaces")
+
 
 
 @app.route('/logout', methods=['GET'])
