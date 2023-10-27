@@ -1,6 +1,6 @@
 from lib.booking import Booking
 from datetime import date
-
+from lib.space import Space
 class BookingRepository():
     def __init__(self, connection):
         self._connection = connection
@@ -49,3 +49,10 @@ class BookingRepository():
         booking.id = row["id"]
         return booking    
 
+    def get_space_by_booking_id(self, space_id):
+        rows = self._connection.execute('SELECT s.* FROM spaces s INNER JOIN bookings b ON s.id = b.space_id WHERE b.id = %s', [space_id])
+        for row in rows:
+            if space_id == row['id']:
+                return Space(row['id'], row['space_name'], row['space_description'], row['price_per_night'], row['available_from'], row['available_to'], row['user_id'])
+            else:
+                return False

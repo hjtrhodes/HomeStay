@@ -21,7 +21,7 @@
                 <a href="/my-spaces">MY SPACES</a>
             </li>
             <li>
-                <a href="/bookings">BOOKINGS</a>
+                <p>BOOKINGS</p>
             </li>
             <li>
                 <a href="/logout">LOG OUT</a>
@@ -37,20 +37,21 @@
     </header>
 
     <div class="spaces-container">
-    <h2>Book a Space</h2>
+    <h2>My Bookings</h2>
     <br>
-    {% for space in spaces %}
+    {% for booking in bookings %}
+    
     <div class="space-listing">
         <div class="space-item">
-            <h3>{{space.space_name}}</h3>
-            <p>{{space.space_description}}</p>
-            <p>{{space.available_from}}</p>
-            <p>{{space.available_to}}</p>
-            <p>£{{space.price_per_night}}</p>
-            <a href="/spaces/{{space.id}}">Book Now</a>
+            <h3>{{booking.booking_date}}</h3>
+            <p>{{booking.booking_status}}</p>
+            {% for space in spaces %}
+            <p>{{space.space_name}}</p>
+            {% endfor %}
         </div>
         <br>
-    {% endfor %}    
+    
+    {% endfor %}     
         <!-- Duplicate the above .space div for each listing -->
     </div>
 
