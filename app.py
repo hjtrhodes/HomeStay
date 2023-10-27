@@ -71,7 +71,7 @@ def show_space_detail(id):
         all_dates = get_dif_between_dates(a_space.available_from, a_space.available_to)
         booked_dates = booking_repo.get_all_confirmed_dates(id)
         dates = [x for x in all_dates if x not in  booked_dates]
-        session['available_dates'] = dates
+        
         return render_template('spaces-detail.html', spaces=spaces, dates=dates)
 
 
@@ -84,6 +84,23 @@ def get_available_date():
     booking_repo.create_booking(booking)
     return redirect("/spaces")
 
+@app.route('/bookings', methods=['GET'])
+def get_requests():
+    connection = get_flask_database_connection(app)
+    booking_repo = BookingRepository(connection)
+    bookings = booking_repo.get_all_by_user_id(session["user_id"])
+    space_ids = [x.space_id for x in bookings]
+    spaces = [booking_repo.get_space_by_booking_id(space_id) for space_id in space_ids]
+
+
+    return render_template('bookings.html', bookings=bookings, spaces=spaces)
+
+
+
+
+
+
+    
 
 
 @app.route('/logout', methods=['GET'])
