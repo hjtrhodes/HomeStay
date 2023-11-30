@@ -1,12 +1,13 @@
-# MakersBnB Python Project Seed
+# This codebase was initially cloned from MakersBnB Python Project Seed
 
-This repo contains the seed codebase for the MakersBnB project in Python (using 
-Flask and Pytest).
+This is my cloned version of the project repo to continue development at project completion.
 
-Someone in your team should fork this seed repo to their Github account. 
-Everyone in the team should then clone this fork to their local machine to work on it.
+We worked in a team of 4 on this project using Flask, Python, PostgreSQL and testing with Pytest. The aim was to practice using version control and agile working practices to create an AirBnB clone from a legacy codebase in 1 week.
+Key learning was around the use of sessions to store information and autheticate/timeout users, using relational databases and a multiclass system with individual routes for pages
+Group members were Megan Folsom, Harry Rhodes, Ray Brown and Ben Dixon. 
 
-## Setup
+
+## For Codebase Local Setup
 
 ```shell
 # Install dependencies and set up the virtual environment
