@@ -9,14 +9,24 @@
 [![Video](https://img.youtube.com/vi/pBcMyL0oLbo/0.jpg)](https://www.youtube.com/watch?v=pBcMyL0oLbo&t=3s)
 
 ## Project Description
-BaldBible is my final Makers project. It was created working in a team of 4 Software Developers and 2 Quality Engineers. The idea for the app came from my own experiences of hair loss and feeling that there should be a more obvious alternative to the hair loss prevention industry to help individuals embrace this natural change. The process of pitching, discussing and communicating the importance of this idea and having the rest of my developers choose it as the final project was very personal and gratifying to me, as was the process of creating it. After conception and discussion Bald Bible became a Pinterest style, hair loss positivity website leveraging the power of images to inspire users to be more accepting of themselves.
-
-This is my cloned version of the project repo to continue development at project completion.
-I was responsible for integration of sessions into the login/logout/timeout functionality as well as using sessions to store user information which was then fed to routes. As a team we decided to mob a lot of the features, particularly testing and routes.
+This is my cloned version of the project repo to continue development at project completion - details of my work after project completion can be found below in 'Functionality Added Since Project Completion'
 
 We worked in a team of 4 on this project using Flask, Python, PostgreSQL and testing with Pytest. The aim was to practice using version control and agile working practices to create an AirBnB clone from a legacy codebase in 1 week.
-Key learning was around the use of sessions to store information and autheticate/timeout users, using relational databases and a multiclass system with individual routes for pages.
-Group members were Megan Folsom, Harry Rhodes, Ray Brown and Ben Dixon. 
+This was the first project in which I had used routes to access backend functions or render frontend pages. There was also key learning around the use of sessions to store information and autheticate/timeout users, using relational databases, test driven development, navigating multiclass systems and avoiding merge conflicts.
+
+### Planning: Understanding the Codebase and User Stories
+We started by mapping the user journey though the app an annotating the classes which would hold the actions for each user interaction: 
+![User Journey](https://res.cloudinary.com/dut4qf1bt/image/upload/v1708613820/HomeStay/User_Journey_r4mv9n.png "User Journey")
+
+Then we designed our PostgreSQL tables considering the values we would need each object to hold:
+![Table Design](https://res.cloudinary.com/dut4qf1bt/image/upload/v1708613820/HomeStay/Table_Design_jqqzdx.png "Table Design")
+
+And completed a fraft of our multiclass design:
+![Multiclass Design](https://res.cloudinary.com/dut4qf1bt/image/upload/v1708613820/HomeStay/Multiclass_design_jif71n.png "Multiclass Design")
+
+
+
+I was responsible for integration of sessions into the login/logout/timeout functionality as well as using sessions to store user information which was then fed to routes. As a team we decided to mob a lot of the features, particularly testing and routes.
 
 
 ## For Codebase Local Setup
