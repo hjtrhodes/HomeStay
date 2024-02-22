@@ -1,5 +1,3 @@
-# This codebase was initially cloned from MakersBnB Python Project Seed
-
 This is my cloned version of the project repo to continue development at project completion.
 I was responsible for integration of sessions into the login/logout/timeout functionality as well as using sessions to store user information which was then fed to routes. As a team we decided to mob a lot of the features, particularly testing and routes.
 
