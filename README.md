@@ -15,15 +15,14 @@ This is my cloned version of the project repo to continue development at project
 We worked in a team of 4 on this project using Flask, Python, PostgreSQL and testing with Pytest. The aim was to practice using version control and agile working practices to create an AirBnB clone from a legacy codebase in 1 week.
 This was the first project in which I had used routes to access backend functions or render frontend pages. There was also key learning around the use of sessions to store information and autheticate/timeout users, using relational databases, test driven development, navigating multiclass systems and avoiding merge conflicts.
 
-### Planning: User Stories, Table and Multi Class Design
-We started by mapping the user journey though the app an annotating the classes which would hold the actions for each user interaction: 
-![User Journey](https://res.cloudinary.com/dut4qf1bt/image/upload/v1708613820/HomeStay/User_Journey_r4mv9n.png "User Journey")
+## My responsibilities:
 
-Then we designed our PostgreSQL tables considering the values we would need each object to hold:
-![Table Design](https://res.cloudinary.com/dut4qf1bt/image/upload/v1708613820/HomeStay/Table_Design_jqqzdx.png "Table Design")
+Planning:
+- Collaboratively completing the Multiclass design and Table design trying to pre-empt what data we would need about our user.
 
-And completed a draft of our multiclass design:
-![Multiclass Design](https://res.cloudinary.com/dut4qf1bt/image/upload/v1708613820/HomeStay/Multiclass_design_jif71n.png "Multiclass Design")
+Project Sprints:
+- Individual responsibilities: Integration of sessions into the login/logout/timeout functionality, using sessions to store user information which was then fed to routes, testing
+- Supported others by pair programming on: Knowledge sharing around sessions, creating routes, creating backend functions
 
 ## Final Acheived MVP Functionality:
 - Locally Hosted PostgreSQL Database connected and answering requests
@@ -34,15 +33,6 @@ And completed a draft of our multiclass design:
 - Bookings: User could view their bookings
 - NavBar: Simple navbar navigation
 - User can see their own spaces
-
-### My responsibilities:
-
-Planning:
-- Collaboratively completing the Multiclass design and Table design trying to pre-empt what data we would need about our user.
-
-Project Sprints:
-- Individual responsibilities: Integration of sessions into the login/logout/timeout functionality, using sessions to store user information which was then fed to routes, testing
-- Supported others by pair programming on: Knowledge sharing around sessions, creating routes, creating backend functions
 
 ## Functionality Added Since Project Completion
 
@@ -55,6 +45,16 @@ Project Sprints:
 - [x] User can delete a booking - New routes
 - [x] Bookings now display with booking length
 - [x] Whole website re-stlyed
+
+### Planning: User Stories, Table and Multi Class Design
+We started by mapping the user journey though the app an annotating the classes which would hold the actions for each user interaction: 
+![User Journey](https://res.cloudinary.com/dut4qf1bt/image/upload/v1708613820/HomeStay/User_Journey_r4mv9n.png "User Journey")
+
+Then we designed our PostgreSQL tables considering the values we would need each object to hold:
+![Table Design](https://res.cloudinary.com/dut4qf1bt/image/upload/v1708613820/HomeStay/Table_Design_jqqzdx.png "Table Design")
+
+And completed a draft of our multiclass design:
+![Multiclass Design](https://res.cloudinary.com/dut4qf1bt/image/upload/v1708613820/HomeStay/Multiclass_design_jif71n.png "Multiclass Design")
 
 ## Challenges/Actions we took to overcome
 Table Design:
