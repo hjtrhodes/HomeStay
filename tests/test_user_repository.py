@@ -8,7 +8,7 @@ able to get the username from id
 
 
 def test_get_user_by_id(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     repo = UserRepository(db_connection)
 
     user = repo.get_by_id(1)
@@ -18,7 +18,7 @@ def test_get_user_by_id(db_connection):
 
 
 def test_get_user_by_email(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     repo = UserRepository(db_connection)
 
     user = repo.get_by_email("bjohnson@email.com")
@@ -28,7 +28,7 @@ def test_get_user_by_email(db_connection):
 
 
 def test_email_and_password_correct(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     repo = UserRepository(db_connection)
 
     user_login = repo.validate_credentials("bjohnson@email.com", "mysecretpassword")
@@ -41,7 +41,7 @@ and password is correct
 """
 
 def test_email_incorrect_and_password_correct(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     repo = UserRepository(db_connection)
 
     user_login = repo.validate_credentials("johnson@email.com", "mysecretpassword")
@@ -53,7 +53,7 @@ and password is incorrect
 """
 
 def test_email_correct_and_password_incorrect(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     repo = UserRepository(db_connection)
 
     user_login = repo.validate_credentials("bjohnson@email.com", "mysecret")

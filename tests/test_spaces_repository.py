@@ -10,7 +10,7 @@ Then the all spaces are shown in a list
 """
 
 def test_show_all_space_including_mine(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     repo = SpaceRepository(db_connection)
     
     all_spaces = repo.all()
@@ -31,7 +31,7 @@ Then I view all current spaces avaliable that do not belong to me
 """
 
 def test_get_all_spaces(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     repo = SpaceRepository(db_connection)
 
     spaces = repo.get_all_spaces(3)  
@@ -49,7 +49,7 @@ Then only the spaces I have listed will be seen
 """
 
 def test_get_all_spaces_by_user_id(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     repo = SpaceRepository(db_connection)
 
     spaces = repo.get_all_spaces_by_id(2)  
@@ -67,7 +67,7 @@ Then no spaces will be shown
 """
 
 def test_no_spaces_by_user_id(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     repo = SpaceRepository(db_connection)
 
     spaces = repo.get_all_spaces_by_id(10)  
@@ -83,7 +83,7 @@ Then the space is added to the database under my id
 """
 
 def test_create_new_space(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     repo = SpaceRepository(db_connection)
 
 
@@ -110,7 +110,7 @@ Then the space is not added to the database and a message returns
 
 
 def test_create_new_space_invalid_info(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     repo = SpaceRepository(db_connection)
 
     new_space = Space(None, None, 'A nice cabin in the woods.', Decimal('1500.00'), datetime.date(2023, 12, 1), datetime.date(2023, 12, 20), 1)
@@ -126,7 +126,7 @@ Then I see the single space from that user
 """
 
 def test_get_single_space_by_id(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     repo = SpaceRepository(db_connection)
 
     spaces = repo.get_single_space_by_id(2)  

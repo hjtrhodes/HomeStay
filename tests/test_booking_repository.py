@@ -3,7 +3,7 @@ from lib.booking import Booking
 from datetime import date
 
 def test_get_by_booking_id(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     connection = db_connection
     test_repo = BookingRepository(connection)
     test_booking = test_repo.get_by_booking_id(1)
@@ -15,14 +15,14 @@ def test_get_by_booking_id(db_connection):
     assert test_booking == Booking(1, test_date, "Confirmed", 1, 1) 
 
 def test_if_booking_false(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     connection = db_connection
     test_repo = BookingRepository(connection)
     test_booking = test_repo.get_by_booking_id(10)
     assert test_booking == None
 
 def test_get_all_by_user(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     connection = db_connection
     test_repo = BookingRepository(connection)
     res = test_repo.get_all_by_user_id(2)
@@ -33,7 +33,7 @@ def test_get_all_by_user(db_connection):
     ]
 
 def test_get_all_by_space(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     connection = db_connection
     test_repo = BookingRepository(connection)
     res = test_repo.get_all_by_space_id(2)
@@ -42,7 +42,7 @@ def test_get_all_by_space(db_connection):
         Booking(5, date(2023, 10, 25), 'Pending', 3, 2),
     ]
 def test_update_booking_status(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     connection = db_connection
     test_repo = BookingRepository(connection)
     test_booking = test_repo.get_by_booking_id(3)
@@ -51,7 +51,7 @@ def test_update_booking_status(db_connection):
     assert test_repo.get_by_booking_id(3).booking_status == "Confirmed"
 
 def test_update_booking_status_deny(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     connection = db_connection
     test_repo = BookingRepository(connection)
     test_booking = test_repo.get_by_booking_id(3)
@@ -60,7 +60,7 @@ def test_update_booking_status_deny(db_connection):
     assert test_repo.get_by_booking_id(3).booking_status == "Denied"    
 
 def test_create_booking_request(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     connection = db_connection
     test_repo = BookingRepository(connection)
     test_booking = Booking(None, date(2023, 10, 20), "Pending", 2, 3)
@@ -69,7 +69,7 @@ def test_create_booking_request(db_connection):
     assert result == Booking(6, date(2023, 10, 20), "Pending", 2, 3)
 
 def test_get_all_confirmed_dates(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     connection = db_connection
     test_repo = BookingRepository(connection)
     test_repo.update_status(3, True)
@@ -81,7 +81,7 @@ def test_get_all_confirmed_dates(db_connection):
     ]
 
 def test_confirmed_dates(db_connection):
-    db_connection.seed('seeds/makers_bnb_seed.sql')
+    db_connection.seed('seeds/homestay_bnb_seed.sql')
     connection = db_connection
     test_repo = BookingRepository(connection)
     dates = test_repo.get_all_confirmed_dates(1)
