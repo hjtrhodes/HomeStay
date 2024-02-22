@@ -1,3 +1,16 @@
+# HOMESTAY
+
+- Project Timeline: 6 days to MVP
+- Main Language: Python, SQL
+- Tech Stack: Flask, PostgreSQL
+- Testing: Pytest
+  
+## Functionality Demo - Opens on Youtube
+[![Video](https://img.youtube.com/vi/RZVKPn00WF8/0.jpg)](https://www.youtube.com/watch?v=pBcMyL0oLbo&t=3s)
+
+## Project Description
+BaldBible is my final Makers project. It was created working in a team of 4 Software Developers and 2 Quality Engineers. The idea for the app came from my own experiences of hair loss and feeling that there should be a more obvious alternative to the hair loss prevention industry to help individuals embrace this natural change. The process of pitching, discussing and communicating the importance of this idea and having the rest of my developers choose it as the final project was very personal and gratifying to me, as was the process of creating it. After conception and discussion Bald Bible became a Pinterest style, hair loss positivity website leveraging the power of images to inspire users to be more accepting of themselves.
+
 This is my cloned version of the project repo to continue development at project completion.
 I was responsible for integration of sessions into the login/logout/timeout functionality as well as using sessions to store user information which was then fed to routes. As a team we decided to mob a lot of the features, particularly testing and routes.
 
