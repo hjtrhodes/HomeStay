@@ -9,7 +9,7 @@ class SpaceRepository:
         spaces = []
 
         for row in rows:
-            space = Space(row["id"],row["space_name"],row["space_description"],row["price_per_night"],row["available_from"],row["available_to"],row["user_id"])
+            space = Space(row["id"],row["space_name"],row["space_description"],row['space_image_url'],row["price_per_night"],row["user_id"])
             spaces.append(space)
         return spaces
         
@@ -20,9 +20,8 @@ class SpaceRepository:
         if (
             new_space.space_name is None or
             new_space.space_description is None or
+            new_space.space_image_url is None or
             new_space.price_per_night is None or
-            new_space.available_from is None or
-            new_space.available_to is None or
             new_space.user_id is None
         ):
             return "One or more fields are missing!"
@@ -30,7 +29,7 @@ class SpaceRepository:
 
         rows = self._connection.execute(
             'INSERT INTO spaces (space_name, space_description, price_per_night, available_from, available_to, user_id) VALUES (%s, %s, %s, %s, %s, %s) RETURNING id',
-            [new_space.space_name, new_space.space_description, new_space.price_per_night, new_space.available_from, new_space.available_to, new_space.user_id]
+            [new_space.space_name, new_space.space_description, new_space.space_image_url, new_space.price_per_night, new_space.user_id]
         )
 
         row = rows[0]
@@ -43,7 +42,7 @@ class SpaceRepository:
         spaces = []
 
         for row in rows:
-            space = Space(row["id"],row["space_name"],row["space_description"],row["price_per_night"],row["available_from"],row["available_to"],row["user_id"])
+            space = Space(row["id"],row["space_name"],row["space_description"],row['space_image_url'],row["price_per_night"],row["user_id"])
             spaces.append(space)
         return spaces
 
@@ -53,7 +52,7 @@ class SpaceRepository:
         spaces = []
 
         for row in rows:
-            space = Space(row["id"],row["space_name"],row["space_description"],row["price_per_night"],row["available_from"],row["available_to"],row["user_id"])
+            space = Space(row["id"],row["space_name"],row["space_description"],row['space_image_url'],row["price_per_night"],row["user_id"])
             spaces.append(space)
         
         if spaces != []:
@@ -66,7 +65,7 @@ class SpaceRepository:
         spaces = []
 
         for row in rows:
-            space = Space(row["id"],row["space_name"],row["space_description"],row["price_per_night"],row["available_from"],row["available_to"],row["user_id"])
+            space = Space(row["id"],row["space_name"],row["space_description"],row['space_image_url'],row["price_per_night"],row["user_id"])
             spaces.append(space)
         
         if spaces != []:

@@ -8,15 +8,12 @@
     </head>
     <body>
 
-            <!--NAV BAR ONCE LOGGED IN STARTS-->
+    <!--NAV BAR ONCE LOGGED IN STARTS-->
     <nav>
+        <div class="brand-logo-space">
+            <img src="https://res.cloudinary.com/dut4qf1bt/image/upload/v1708516705/HomeStay/Pngtree_beach_house_logo_5890445_q9dncd.png" alt="Airbnb Logo" style="width: 120px; height: auto;">
+        </div>
         <ul>
-            <li>
-            <a class="active" href="/index">HOME</a>
-            </li>
-            <li>
-                <a href="/spaces">SPACES</a>
-            </li>
             <li>
                 <a href="/my-spaces">MY SPACES</a>
             </li>
@@ -29,32 +26,20 @@
         </ul>
     </nav>
     <!--NAV BAR ENDS-->
-    <header>
-        <a href="/index">
-        <div class="brand-logo-space"><img src="https://icon-library.com/images/white-home-icon-png/white-home-icon-png-21.jpg" alt="Airbnb Logo">
-            <h1>Makersbnb</h1>
-        </div>
-    </a>
 
+
+<h2>Book a Space</h2>
     <div class="spaces-container">
-    <h2>Book a Space</h2>
-    <br>
     {% for space in spaces %}
-    <div class="space-listing">
         <div class="space-item">
             <h3>{{space.space_name}}</h3>
             <p>{{space.space_description}}</p>
-            <p>{{space.available_from}}</p>
-            <p>{{space.available_to}}</p>
-            <p>£{{space.price_per_night}}</p>
-            <a href="/spaces/{{space.id}}">Book Now</a>
+            <img src="{{ space.space_image_url }}" alt="Space Image" class="space-image">
+            <p>£{{space.price_per_night}} per night</p>
+            <a class='space-button' href="/spaces/{{space.id}}">Book Now</a>
         </div>
         <br>
     {% endfor %}    
-        <!-- Duplicate the above .space div for each listing -->
     </div>
-
-    <br>
-
-    </body>
+</body>
 </html>

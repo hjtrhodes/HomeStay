@@ -1,5 +1,5 @@
 body {
-    background-color: #FF5A5F; /* Red background */
+    background-color: #ffb9b9; /* Red background */
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -17,12 +17,20 @@ body {
 
 /*Nav*/
 
+nav {
+    background-color: rgba(253, 0, 0, 0.3);
+    width: 100%;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 nav ul {
     list-style-type: none;
     text-align: right;
-    font-size: 20px;
+    font-size: 15px;
     word-spacing: 2px;
     padding: 20px;
+    top:0;
 }
 
 nav li {
@@ -33,6 +41,7 @@ nav li a {
     color: rgb(255, 255, 255);
     text-decoration: none;
     display: inline;
+    padding: 5px;
 }
 
 
@@ -52,87 +61,47 @@ h1 {
     color: white;
 }
 
-.brand-logo img {
-    width: 50px; /* Adjust this for the size of your logo */
-}
-
-.home-brand-logo img {
-    align-items: center;
-    justify-content: center;
-    width: 250px; /* Adjust this for the size of your logo */
-}
-
 .brand-logo-space img{
     position:absolute;
+    margin-top: 5px;
     left:0;
-    top:22px;
-    padding: 20px;
-    width: 30px; /* Adjust this for the size of your logo */
-
-}
-
-.brand-logo-space h1 {
-    text-align:left;
-    position:absolute;
-    left:40px;
-    top:0;
-    padding: 20px;
-
-}
-
-.main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-
-.centered-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;  /* Space between centered containers */
-}
-
-.navbar {
-    display: flex;
-    gap: 15px;
-}
-
-.navbar a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
 }
 
 .login-section {
     background-color: #7bdcbf;
     padding: 20px;
     border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 .login {
     width: 382px;
     overflow: hidden;
-    padding: 40px 60px 60px 60px;
-    background: #f4f4f4;
-    border-radius: 15px;
-    position: absolute;       /* Position it absolutely */
-    top: 50%;                 /* Start it halfway down the body */
-    left: 50%;                /* Start it halfway across the body */
-    transform: translate(-50%, -50%); /* This will pull the box back by half of its own width and height, centering it */
+    position: absolute;       
+    top: 50%;                 
+    left: 50%;               
+    transform: translate(-50%, -50%); 
 }
+
 h2{
     text-align: center;
     color: #ffffff;
     padding: 5px;
     font-size: 2em;
 }
+
 label{
-    color: #72c2ed;
-    font-size: 17px;
+    word-wrap: break-word;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    padding: 5px;
+    font-size: 1em;
 }
+
 #email_label {
     width: 350px;
     height: 30px;
@@ -163,45 +132,11 @@ label{
     color: #FF5A5F;
     font-size: 25px;
     text-align: center;
-    text-transform: uppercase;
     font-weight: 600;
 }
 
 
 #log:hover{
-    background-color: #568fae ;
+    background-color: #be4141 ;
     color: #e1d3dc;
-}
-
-footer {
-    color: #fff; /* Text color */
-    text-align: center;
-    padding: 10px; /* Add some padding to the footer for spacing */
-
-}
-
-/* Style the anchor tag (if needed) */
-/* footer a {
-    color: #fff;
-    text-decoration: none; /* Remove underline from links */
-
-
-
-footer {
-    flex-grow: 1;
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
-    padding: 10px;
-    font-size: 15px;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-}
-
-/* Style the anchor tag (if needed) */
-footer a {
-    color: #fff;
-    text-decoration: none;
 }

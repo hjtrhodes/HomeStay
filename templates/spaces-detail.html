@@ -8,14 +8,16 @@
     </head>
     <body>
 
-                    <!--NAV BAR ONCE LOGGED IN STARTS-->
+    <!--NAV BAR ONCE LOGGED IN STARTS-->
     <nav>
+        <a href="/spaces">
+            <div class="brand-logo-space">
+                <img src="https://res.cloudinary.com/dut4qf1bt/image/upload/v1708516705/HomeStay/Pngtree_beach_house_logo_5890445_q9dncd.png" alt="Airbnb Logo" style="width: 120px; height: auto;">
+            </div>
+        </a>
         <ul>
             <li>
-            <a class="active" href="/index">HOME</a>
-            </li>
-            <li>
-                <a href="/spaces">SPACES</a>
+                <a href="/spaces">HOME</a>
             </li>
             <li>
                 <a href="/my-spaces">MY SPACES</a>
@@ -29,25 +31,30 @@
         </ul>
     </nav>
     <!--NAV BAR ENDS-->
-        <h1>Book this Space</h1>
+    {% for space in spaces %}
+    <h2>Book {{space.space_name}}</h2>
+    {% endfor %}
+    <div class="spaces-container">
         {% for space in spaces %}
-        <div class="space-listing">
             <div class="space-item">
                 <h3>{{space.space_name}}</h3>
                 <p>{{space.space_description}}</p>
-                <p>{{space.available_from}}</p>
-                <p>{{space.available_to}}</p>
-                <p>£{{space.price_per_night}}</p>
+                <img src="{{ space.space_image_url }}" alt="Space Image" class="space-image">
+                <p>£{{space.price_per_night}} per night</p>
             {% endfor %}
-            <h3> Dates Available </h3>
-            <br>
-            <label for="date">Choose a date:</label>
-                <form action='/spaces/create' method="POST">
-                <input type ="date" name="date" id="date" min={{dates[0]}}, max={{dates[-1]}}>
-                <input type="submit" value="Book Date">
-            </select>
-            <br>
-            </div>
+            <form action="/spaces/create" method="POST">
+                <div class="date-input">
+                    <label for="start_date">Start date:<br></label>
+                    <input type="date" name="booking_start_date" id="start_date">
+                </div>
+                <div class="date-input">
+                    <label for="end_date">End date:<br></label>
+                    <input type="date" name="booking_end_date" id="end_date">
+                </div>
+                <input class='date-button' type="submit" value="Request to Book Dates">
+            </form>
+        </div>
+        </div>
 
     </body>
-</html>
+    </html>

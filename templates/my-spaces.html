@@ -7,15 +7,44 @@
     <link rel="stylesheet" href="/static/spaces.css"> 
     </head>
     <body>
-
-                    <!--NAV BAR ONCE LOGGED IN STARTS-->
+        <style>
+            #pendingBookings {
+                display: none;
+            }
+            #confirmedBookings {
+                display: none;
+            }
+        </style>
+        <script>
+            function togglePendingBookings() {
+                var pendingBookings = document.getElementById('pendingBookings');
+                // Toggle the visibility of the pending booking section
+                if (pendingBookings.style.display === 'none') {
+                    pendingBookings.style.display = 'block';
+                } else {
+                    pendingBookings.style.display = 'none';
+                }
+            }
+            function toggleconfirmedBookings() {
+                var confirmedBookings = document.getElementById('confirmedBookings');
+                // Toggle the visibility of the pending booking section
+                if (confirmedBookings.style.display === 'none') {
+                    confirmedBookings.style.display = 'block';
+                } else {
+                    confirmedBookings.style.display = 'none';
+                }
+            }
+        </script>
+    <!--NAV BAR ONCE LOGGED IN STARTS-->
     <nav>
+        <a href="/spaces">
+            <div class="brand-logo-space">
+                <img src="https://res.cloudinary.com/dut4qf1bt/image/upload/v1708516705/HomeStay/Pngtree_beach_house_logo_5890445_q9dncd.png" alt="Airbnb Logo" style="width: 120px; height: auto;">
+            </div>
+        </a>
         <ul>
             <li>
-            <a class="active" href="/index">HOME</a>
-            </li>
-            <li>
-                <a href="/spaces">SPACES</a>
+                <a href="/spaces">HOME</a>
             </li>
             <li>
                 <a href="/my-spaces">MY SPACES</a>
@@ -29,39 +58,61 @@
         </ul>
     </nav>
     <!--NAV BAR ENDS-->
-            <!-- Brand Logo -->
-            <header>
-                <a href="/index">
-                <div class="brand-logo-space"><img src="https://icon-library.com/images/white-home-icon-png/white-home-icon-png-21.jpg" alt="Airbnb Logo">
-                    <h1>Makersbnb</h1>
-                </div>
-            </a>
-        </header>
-    <div class="spaces-container">
+
     <h2>My Spaces</h2>
-    <br>
-    {% for space in my_spaces %}
-    <div class="space-listing">
-        <div class="space-item">
-            <h3>{{space.space_name}}</h3>
-            <p>{{space.space_description}}</p>
-            <p>{{space.available_from}}</p>
-            <p>{{space.available_to}}</p>
-            <p>£{{space.price_per_night}}</p>
-            
-        </div>
-        <br>
+    <div class="spaces-container">
+        {% for space in my_spaces %}
+            <div class="space-item">
+                <h3>{{space.space_name}}</h3>
+                <p>{{space.space_description}}</p>
+                <img src="{{ space.space_image_url }}" alt="Space Image" class="space-image">
+                <p>£{{space.price_per_night}} per night</p>
+                <button class="date-button" onclick="togglePendingBookings()">Pending Bookings</button>
+                <div id="pendingBookings">
+                    {% for booking in pending_bookings %}
+                        {% if booking.space_id == space.id %}
+                            <div class="booking-item">
+                                <h4>Pending Booking</h4>
+                                <p>Start Date: {{ booking.booking_start_date }}</p>
+                                <p>End Date: {{ booking.booking_end_date }}</p>
+                                <p>Trip Length: {{booking.trip_length}} days</p>
+                                <p>{{ booking.booking_status }}</p>
+                                <form action="/bookingconfirm" method="POST">
+                                    <input type="hidden" name="booking_id" value="{{ booking.id }}">
+                                    <input type="hidden" name="confirm_or_deny" value="True">
+                                    <button type="submit" class="date-button">Accept Booking</button>
+                                </form>
+                                <form action="/bookingconfirm" method="POST">
+                                    <input type="hidden" name="booking_id" value="{{ booking.id }}">
+                                    <input type="hidden" name="confirm_or_deny" value="False">
+                                    <button type="submit" class="date-button">Deny Booking</button>
+                                </form>
+                            </div>
+                            <br>
+                        {% endif %}
+                    {% endfor %}
+                </div>
 
-    {% endfor %}
-    
-        
-        <!-- Duplicate the above .space div for each listing -->
-    </div>
-    <br>
-    <br>
+                <button class="date-button" onclick="toggleconfirmedBookings()">Confirmed Bookings</button>
+                <div id="confirmedBookings" class="collapse">
+                    {% for booking in confirmed_bookings %}
+                        {% if booking.space_id == space.id %}
+                            <div class="booking-item">
+                                <h4>Confirmed Booking</h4>
+                                <p>Start Date: {{ booking.booking_start_date }}</p>
+                                <p>End Date: {{ booking.booking_end_date }}</p>
+                                <p>Trip Length: {{booking.trip_length}} days</p>
+                                <p>{{ booking.booking_status }}</p>
+                            </div>
+                            <br>
+                        {% endif %}
+                    {% endfor %}
+                </div>
 
-    <div>
-        <a href="/logout">LOGOUT</a>
+
+            </div>
+            <br>
+        {% endfor %}
     </div>
 
     </body>

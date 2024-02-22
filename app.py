@@ -5,7 +5,7 @@ from lib.database_connection import get_flask_database_connection
 from lib.user_repository import *
 from lib.booking_repository import BookingRepository
 from lib.spaces_repository import SpaceRepository
-from lib.get_dates import *
+from lib.booking import Booking
 
 # Create a new Flask app
 app = Flask(__name__)
@@ -15,7 +15,7 @@ app.config['PERMANENT_SESSION_LIFETIME'] = 1800  # 30 minutes
 # == Your Routes Here ==
 
 
-@app.route('/login', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_login():
     return render_template('login.html')
 
@@ -38,7 +38,7 @@ def submit_login():
 def get_spaces():
     connection = get_flask_database_connection(app)
     if 'user_email' not in session:
-        return redirect("/login")
+        return redirect("/")
     else:
         space_repo = SpaceRepository(connection)
         spaces = space_repo.all()
@@ -50,39 +50,54 @@ def get_my_spaces():
     connection = get_flask_database_connection(app)
     
     if 'user_email' not in session:
-        return redirect("/login")
+        return redirect("/")
     else:
         space_repo = SpaceRepository(connection)
+        booking_repo = BookingRepository(connection)
         my_spaces = space_repo.get_all_spaces_by_id(session['user_id'])
-        return render_template('my-spaces.html', my_spaces=my_spaces)
+        pending_bookings = booking_repo.get_all_by_space_id_if_pending(my_spaces[0].id)
+        confirmed_bookings=booking_repo.get_all_confirmed_by_space(my_spaces[0].id)
+        return render_template('my-spaces.html', my_spaces=my_spaces, pending_bookings=pending_bookings, confirmed_bookings=confirmed_bookings)
+
+@app.route('/bookingconfirm', methods=['POST'])
+def confirm_deny():
+    connection = get_flask_database_connection(app)
+        
+    if 'user_email' not in session:
+        return redirect("/")
+    else:
+        booking_id = request.form.get('booking_id')
+        confirm_or_deny = request.form.get('confirm_or_deny')
+        
+        if booking_id is None or confirm_or_deny is None:
+            return "Missing booking_id or confirm_or_deny parameter", 400
+        
+        booking_repo = BookingRepository(connection)
+        booking_repo.update_status(booking_id, confirm_or_deny)
+        return redirect("/my-spaces")
 
 @app.route('/spaces/<int:id>', methods=['GET'])
 def show_space_detail(id):
     connection = get_flask_database_connection(app)
     if 'user_email' not in session:
-        return redirect("/login")
+        return redirect("/")
     else:
         session['space_id'] = id
         space_repo = SpaceRepository(connection)
         spaces = space_repo.get_single_space_by_id(id)
-        booking_repo = BookingRepository(connection)
-        l_space = space_repo.get_single_space_by_id(id)
-        a_space = l_space[0]
-        all_dates = get_dif_between_dates(a_space.available_from, a_space.available_to)
-        booked_dates = booking_repo.get_all_confirmed_dates(id)
-        dates = [x for x in all_dates if x not in  booked_dates]
         
-        return render_template('spaces-detail.html', spaces=spaces, dates=dates)
+        return render_template('spaces-detail.html', spaces=spaces)
 
 
 @app.route('/spaces/create', methods=['POST'])
 def get_available_date():
     connection = get_flask_database_connection(app)
     booking_repo = BookingRepository(connection)
-    date = request.form['date']
-    booking = Booking(None, date, 'Pending', session['user_id'], session['space_id'])
+    booking_start_date = request.form['booking_start_date']
+    booking_end_date = request.form['booking_end_date']
+    booking = Booking(None, booking_start_date, booking_end_date, 'Pending', session['user_id'], session['space_id'])
     booking_repo.create_booking(booking)
-    return redirect("/spaces")
+    return redirect("/bookings")
 
 @app.route('/bookings', methods=['GET'])
 def get_requests():
@@ -90,26 +105,29 @@ def get_requests():
     booking_repo = BookingRepository(connection)
     bookings = booking_repo.get_all_by_user_id(session["user_id"])
     space_ids = [x.space_id for x in bookings]
-    spaces = [booking_repo.get_space_by_booking_id(space_id) for space_id in space_ids]
-
-
+    spaces = [booking_repo.get_space_for_booking(space_id) for space_id in space_ids]
     return render_template('bookings.html', bookings=bookings, spaces=spaces)
 
-
-
-
-
-
+@app.route('/booking/delete', methods=['POST'])
+def delete_booking():
+    connection = get_flask_database_connection(app)
+    booking_repo = BookingRepository(connection)
+    booking_id = request.form.get('booking_id')
     
+    if booking_id is None:
+        return "Missing booking_id parameter", 400
+    
+    booking_repo.delete_booking(booking_id)
+    return redirect("/bookings")
 
 
 @app.route('/logout', methods=['GET'])
 def get_logout():
     if 'user_email' not in session:
-        return redirect("/login")
+        return redirect("/")
     else:
         session.clear()
-        return redirect("/login")
+        return redirect("/")
 
 
 # GET /index

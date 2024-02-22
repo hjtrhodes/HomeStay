@@ -3,11 +3,6 @@ from flask import g
 from psycopg.rows import dict_row
 
 
-# This class helps us interact with the database.
-# It wraps the underlying psycopg library that we are using.
-
-# If the below seems too complex right now, that's OK.
-# That's why we have provided it!
 class DatabaseConnection:
     # VVV CHANGE BOTH OF THESE VVV
     DEV_DATABASE_NAME = "DEFAULT_MAKERSBNB_PROJECT"
