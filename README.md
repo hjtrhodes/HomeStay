@@ -2,6 +2,7 @@
 
 - Project Timeline: 6 days to MVP
 - Main Language: Python, SQL
+- Additional Language: SQL
 - Tech Stack: Flask, PostgreSQL
 - Testing: Pytest
   
