@@ -15,7 +15,7 @@ This is my cloned version of the project repo to continue development at project
 We worked in a team of 4 on this project using Flask, Python, PostgreSQL and testing with Pytest. The aim was to practice using version control and agile working practices to create an AirBnB clone from a legacy codebase in 1 week.
 This was the first project in which I had used routes to access backend functions or render frontend pages. There was also key learning around the use of sessions to store information and autheticate/timeout users, using relational databases, test driven development, navigating multiclass systems and avoiding merge conflicts.
 
-## My responsibilities:
+### My responsibilities:
 
 Planning:
 - Collaboratively completing the Multiclass design and Table design trying to pre-empt what data we would need about our user.
@@ -34,7 +34,7 @@ Project Sprints:
 - NavBar: Simple navbar navigation
 - User can see their own spaces
 
-## Functionality Added Since Project Completion
+### Functionality Added Since Project Completion
 
 - [x] Table Schema now supports images which display for a space
 - [x] Pending booking displayed to user on My Spaces Page  
@@ -46,7 +46,7 @@ Project Sprints:
 - [x] Bookings now display with booking length
 - [x] Whole website re-stlyed
 
-### Planning: User Stories, Table and Multi Class Design
+## Planning: User Stories, Table and Multi Class Design
 We started by mapping the user journey though the app an annotating the classes which would hold the actions for each user interaction: 
 ![User Journey](https://res.cloudinary.com/dut4qf1bt/image/upload/v1708613820/HomeStay/User_Journey_r4mv9n.png "User Journey")
 
